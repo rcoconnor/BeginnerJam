@@ -3,13 +3,16 @@ extends KinematicBody2D
 export var walk_acceleration = 1.0
 export var max_speed = 10.0
 export var jump_lift = 10
-export var gravity = 10.0
+export var gravity_amount = 10.0
 export var friction_coefficient = 0.99
 
 var velocity = Vector2()
+var gravity = Vector2.DOWN
 
 # Game mechanics 
+var can_jump = true
 var is_attacking = false
+var is_jumping = false
 
 onready var sword = get_node("Sword")
 
@@ -23,15 +26,25 @@ var cur_direction = Vector2(DIRECTION_RIGHT, 1)
 func _ready():
 	cur_direction = Vector2(1, 1)
 	velocity = Vector2.ZERO
-
+	gravity = Vector2.DOWN * gravity_amount
+	velocity = move_and_slide(velocity, Vector2.UP)
+	can_jump = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	if (not is_on_floor()): 
-		velocity.y += gravity
+func process(_delta): 
+	pass
+
+
+# Called every frame for physics processes 
+func _physics_process(delta):
+	velocity = velocity + gravity
+	if (is_on_floor()): can_jump = true 
+	if not(is_jumping): 
+		velocity = move_and_slide(velocity, Vector2.UP)
 	else: 
-		velocity.x *= friction_coefficient
-	velocity = move_and_slide(velocity, Vector2.UP)
+		var collision = move_and_collide(velocity * delta)
+		if collision: 
+			velocity = move_and_slide(velocity, Vector2.UP)
 
 
 func move_left():
@@ -86,9 +99,9 @@ func _on_animation_finished():
 		is_attacking=false
 
 
-func jump(): 
-	if not is_attacking: 
-		#next_velocity.y -= jump_lift	
-		pass
-	pass
+func jump():
+	if (not is_attacking) and (can_jump): 
+		velocity = velocity + (Vector2.UP * jump_lift)
+		can_jump = false
+
 

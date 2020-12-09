@@ -29,9 +29,10 @@ func handle_input():
 			$Player.move_left()
 		else: 
 			$Player.move_right()
-	elif(Input.is_action_just_pressed("attack")): 
-		$Player.attack()
-#	elif(Input.is_action_pressed("jump")): 
-#		$Player.jump()
 	else: $Player.stand_still() 
-
+	
+	if(Input.is_action_just_pressed("attack")): 
+		$Player.attack()
+	elif(Input.is_action_pressed("jump")): 
+		$Player.jump()
+	

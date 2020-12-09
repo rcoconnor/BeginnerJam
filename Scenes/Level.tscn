@@ -135,8 +135,9 @@ format = 1
 tile_data = PoolIntArray( 262146, 1, 6, 262147, 0, 0, 262148, 1, 6, 262149, 0, 0, 262150, 0, 0 )
 
 [node name="PlayerController" parent="." instance=ExtResource( 3 )]
-position = Vector2( -88.738, 13.3988 )
+position = Vector2( -8.46429, 24.3368 )
 
 [node name="Enemy" parent="." instance=ExtResource( 1 )]
-position = Vector2( -152.345, 10.7712 )
+position = Vector2( -34.6226, 20.5969 )
 launch_speed = 30.0
+walk_speed = 2.0

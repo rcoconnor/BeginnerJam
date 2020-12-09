@@ -81,6 +81,8 @@ extents = Vector2( 7, 16 )
 script = ExtResource( 2 )
 walk_acceleration = 2.0
 max_speed = 30.0
+jump_lift = 120
+gravity_amount = 9.8
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 14 )
