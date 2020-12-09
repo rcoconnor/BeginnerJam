@@ -1,0 +1,18 @@
+Godot Engine v3.2.3.stable.official - https://godotengine.org
+OpenGL ES 3.0 Renderer: Intel(R) Iris(TM) Graphics 6100
+ 
+Registered camera FaceTime HD Camera with id 1 position 0 at index 0
+**ERROR**: Cannot open file 'res://Scripts/PlayerController.tscn'.
+   At: scene/resources/resource_format_text.cpp:1228:load_interactive() - Condition "err != OK" is true. Returned: Ref<ResourceInteractiveLoader>()
+**ERROR**: Failed loading resource: res://Scripts/PlayerController.tscn. Make sure resources have been imported by opening the project in the editor at least once.
+   At: core/io/resource_loader.cpp:279:_load() - Condition "found" is true. Returned: RES()
+**ERROR**: res://Level.tscn:3 - Parse Error: [ext_resource] referenced nonexistent resource at: res://Scripts/PlayerController.tscn
+   At: scene/resources/resource_format_text.cpp:440:poll() - res://Level.tscn:3 - Parse Error: [ext_resource] referenced nonexistent resource at: res://Scripts/PlayerController.tscn
+**ERROR**: Failed to load resource 'res://Level.tscn'.
+   At: core/io/resource_loader.cpp:208:load() - Condition "err != OK" is true. Returned: RES()
+**ERROR**: Failed loading resource: res://Level.tscn. Make sure resources have been imported by opening the project in the editor at least once.
+   At: core/io/resource_loader.cpp:279:_load() - Condition "found" is true. Returned: RES()
+**ERROR**: Failed loading scene: res://Level.tscn
+   At: main/main.cpp:1944:start() - Condition "!scene" is true. Returned: false
+**WARNING**: ObjectDB instances leaked at exit (run with --verbose for details).
+   At: core/object.cpp:2135:cleanup() - ObjectDB instances leaked at exit (run with --verbose for details).

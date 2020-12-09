@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Animations/SwordStill.tres" type="Animation" id=1]
+[ext_resource path="res://Animations/SwordMove.tres" type="Animation" id=2]
+[ext_resource path="res://Scripts/Sword.gd" type="Script" id=3]
+[ext_resource path="res://Images/SwordWalk.png" type="Texture" id=4]
+[ext_resource path="res://Animations/SwordAttack.tres" type="Animation" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 11.574
+
+[node name="Sword" type="Node2D"]
+script = ExtResource( 3 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/attack = ExtResource( 5 )
+anims/move = ExtResource( 2 )
+anims/stand_still = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -3.69508, -1.28096 )
+texture = ExtResource( 4 )
+vframes = 4
+hframes = 5
+region_rect = Rect2( 0, 0, 160, 128 )
+
+[node name="SwordHitbox" type="Area2D" parent="."]
+
+[node name="Hurtbox2" type="CollisionShape2D" parent="SwordHitbox"]
+position = Vector2( 23.8178, 2.44501 )
+scale = Vector2( 0.75, 0.75 )
+shape = SubResource( 1 )
+disabled = true
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="on_animation_finished"]
